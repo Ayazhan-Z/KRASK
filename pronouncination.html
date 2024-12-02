@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Tracing Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        #canvas {
+            border: 1px solid #000;
+            width: 300px;
+            height: 300px;
+            cursor: crosshair;
+            background-color: #ffffff;
+        }
+        .letter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .letter-button {
+            padding: 10px 15px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .letter-button:hover {
+            background-color: #0056b3;
+        }
+        .letter-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .letter-image {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Letter Selection Buttons -->
+        <div class="letter-buttons">
+            <!-- Generate buttons for each letter -->
+            <script>
+                const letters = [
+                    { char: 'A', img: 'https://i.pinimg.com/474x/59/ab/d1/59abd18d017858bddbdd14f07b0c0374.jpg', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/A.wav' },
+                    { char: 'B', img: 'https://cdn.pixabay.com/photo/2012/04/24/17/18/letter-40517_960_720.png', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/B.wav' },
+                    { char: 'C', img: 'https://t19.pimg.jp/094/342/509/1/94342509.jpg', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/C.wav' },
+                    { char: 'D', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMpawY8TYT0wxNVlDpKrZbqQ2ydjWBEXNNoQ&s', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/D.wav' },
+                    { char: 'E', img: 'https://cdn.pixabay.com/photo/2012/04/24/17/19/letter-40520_960_720.png', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/E.wav' },
+                    { char: 'F', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoN6MmVFuVK_qK2BDFhY-wB0LqrOs8NXWzYkzefgPq4hErocJdZcIDT5R68Xlm1idIQ_A&usqp=CAU', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/F.wav' },
+                    { char: 'G', img: 'https://images.pond5.com/tracing-alphabet-letter-g-prewriting-illustration-210510404_iconm.jpeg', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/G.wav' },
+                    { char: 'H', img: 'https://thumbs.dreamstime.com/b/tracing-alphabet-letter-h-prewriting-dotted-line-element-kindergarten-preschool-montessori-school-kids-worksheet-256064097.jpg', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/H.wav' },
+                    { char: 'I', img: 'https://images.all-free-download.com/images/graphiclarge/alphabet_tracing_letter_i_clip_art_24671.jpg', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/I.wav' },
+                    { char: 'J', img: 'https://cdn.pixabay.com/photo/2012/04/24/17/19/letter-40525_960_720.png', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/J.wav' },
+                    { char: 'K', img: 'https://www.pngitem.com/pimgs/m/635-6357048_dashed-line-of-alphabet-letter-k-tracing-letter.png', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/K.wav' },
+                    { char: 'L', img: 'https://www.pngkey.com/png/detail/902-9022852_dashed-line-of-alphabet-letter-l-letter-l.png', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/L.wav' },
+                    { char: 'M', img: 'https://images.freeimages.com/vme/images/1/6/166262/alphabet_tracing_letter_m_clip_art_preview.jpg?fmt=webp&w=500', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/M.wav' },
+                    { char: 'N', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO0vkvXSWe16u7VgIouwa3fyvexbx61n8H7g&s', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/N.wav' },
+                    { char: 'O', img: 'https://storage.needpix.com/rsynced_images/letter-40530_1280.png', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/O.wav' },
+                    { char: 'P', img: 'https://en.pimg.jp/094/342/522/1/94342522.jpg', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/P.wav' },
+                    { char: 'Q', img: 'https://images.all-free-download.com/images/graphiclarge/alphabet_tracing_letter_q_clip_art_24679.jpg', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/Q.wav' },
+                    { char: 'R', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwla6sRXscJ9lTj6ehP6kQJ1rU-MNa0TgUfwie37c77S8BtKHAPmTmyOQbgIWbH_4yDY&usqp=CAU', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/R.wav' },
+                    { char: 'S', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_FeNYn9JcAQIgGUWDYVuNanWZgkJk_-Wb_A&s', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/S.wav' },
+                    { char: 'T', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7ArX6fwS6YU7vizHMRNWsPKAOBwak2cEuRQ&s', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/T.wav' },
+                    { char: 'U', img: 'https://cdn.pixabay.com/photo/2012/04/24/17/21/capital-u-40536_1280.png', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/U.wav' },
+                    { char: 'V', img: 'https://images.freeimages.com/vhq/images/previews/c39/alphabet-tracing-letter-v-clip-art-77155.jpg', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/V.wav' },
+                    { char: 'W', img: 'https://cdn.pixabay.com/photo/2012/04/24/17/21/capital-w-40538_960_720.png', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/W.wav' },
+                    { char: 'X', img: 'https://cdn.pixabay.com/photo/2012/04/24/17/22/capital-x-40542_1280.png', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/X.wav' },
+                    { char: 'Y', img: 'https://cdn.pixabay.com/photo/2012/04/24/17/22/capital-y-40543_960_720.png', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/Y.wav' },
+                    { char: 'Z', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgxD6sPkdZpaj66pF4EEnE1uSbb0dfjwncK1r0pMwQ2FfaGm_Mt5yFccPujUpF3Bx4jj0&usqp=CAU', audio: 'C:/Users/user/Desktop/APP/audios/english_letters/Z.wav' }
+                ];
+
+                function createLetterButton(letter) {
+                    const button = document.createElement('button');
+                    button.className = 'letter-button';
+                    button.textContent = letter.char;
+                    button.onclick = function() {
+                        displayLetterInfo(letter);
+                        playLetterAudio(letter.audio);
+                    };
+                    return button;
+                }
+
+                function displayLetterInfo(letter) {
+                    const imageContainer = document.querySelector('.letter-display');
+                    const image = document.createElement('img');
+                    image.src = letter.img;
+                    image.alt = letter.char;
+                    image.className = 'letter-image';
+                    imageContainer.innerHTML = ''; // Clear previous letter
+                    imageContainer.appendChild(image);
+                }
+
+                function playLetterAudio(audioSrc) {
+                    const audio = new Audio(audioSrc);
+                    audio.play();
+                }
+
+                const letterButtons = document.querySelector('.letter-buttons');
+                letters.forEach(letter => {
+                    letterButtons.appendChild(createLetterButton(letter));
+                });
+            </script>
+        </div>
+
+        <div class="letter-display">
+            <!-- This will show the image and letter info when clicked -->
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="canvas" width="300" height="300"></canvas>
+            <br>
+            <button onclick="clearCanvas()">Clear</button>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
+
+        // Set canvas properties
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = 'black';
+
+        // Function to start drawing
+        function startDrawing(e) {
+            drawing = true;
+            ctx.beginPath();
+            ctx.moveTo(e.offsetX, e.offsetY);
+        }
+
+        // Function to draw
+        function draw(e) {
+            if (!drawing) return;
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+        }
+
+        // Function to stop drawing
+        function stopDrawing() {
+            drawing = false;
+        }
+
+        // Function to clear the canvas
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Event listeners for drawing
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+    </script>
+</body>
+</html>

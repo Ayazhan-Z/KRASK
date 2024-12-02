@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #searchBar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .word-result {
+            margin-top: 20px;
+        }
+        .word-result h2 {
+            color: #007bff;
+        }
+        .definition {
+            margin: 10px 0;
+        }
+        .word-type {
+            font-weight: bold;
+        }
+        .example {
+            font-style: italic;
+            color: #555;
+        }
+        .error {
+            color: red;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Dictionary</h1>
+
+    <input type="text" id="searchBar" placeholder="Search for a word..." oninput="searchWord()">
+    
+    <div class="word-result" id="wordResult">
+        <!-- Word results will be displayed here -->
+    </div>
+</div>
+
+<script>
+    async function searchWord() {
+        const searchQuery = document.getElementById("searchBar").value.toLowerCase().trim();
+        const result = document.getElementById("wordResult");
+
+        // Clear previous results
+        result.innerHTML = '';
+
+        if (searchQuery === '') {
+            return; // Do nothing if the search bar is empty
+        }
+
+        const apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchQuery}`;
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            if (data[0]) {
+                const wordData = data[0];
+                const definition = wordData.meanings[0].definitions[0];
+                result.innerHTML = `
+                    <h2>${searchQuery.charAt(0).toUpperCase() + searchQuery.slice(1)}</h2>
+                    <div class="definition">
+                        <p><span class="word-type">${definition.partOfSpeech}:</span> ${definition.definition}</p>
+                        <p class="example"><span>Example:</span> ${definition.example || 'No example available.'}</p>
+                    </div>
+                `;
+            } else {
+                result.innerHTML = '<p class="error">Word not found in the dictionary. Please try another word.</p>';
+            }
+        } catch (error) {
+            result.innerHTML = '<p class="error">Error fetching data from the dictionary API.</p>';
+        }
+    }
+</script>
+
+</body>
+</html>

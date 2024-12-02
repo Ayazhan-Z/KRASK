@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn to Read: Support for Burmese Refugees</title>
+    <style>
+        /* General Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9f6ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        /* Main Section */
+        main {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        section:hover {
+            transform: scale(1.02);
+        }
+
+        section h2 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .content div {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .content div img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .content div:hover {
+            background-color: #e0f7e0;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Form Styling */
+        form input {
+            padding: 10px;
+            font-size: 1.1em;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Learn to Read: Support for Burmese Refugees</h1>
+        <p>Start your journey to reading and learning</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Literacy Basics Section -->
+        <section>
+            <h2>Start Learning</h2>
+            <div class="content">
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/5333/5333073.png" alt="Alphabet Icon">
+                    <p><strong>Alphabet</strong></p>
+                    <button onclick="window.location.href='alphabet.html';">Learn Alphabet</button>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.freepik.com/256/2677/2677283.png?semt=ais_hybrid" alt="Sentence Icon">
+                    <p><strong>Sentences</strong></p>
+                    <button onclick="window.location.href='sentences.html';">Learn Sentences</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Exercises -->
+        <section>
+            <h2>Interactive Exercises</h2>
+            <div class="content">
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2436/2436636.png" alt="Reading Section">
+                    <p><strong>Reading Section</strong></p>
+                    <button onclick="window.location.href='matching_game.html';">Start Reading Section</button>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/12054/12054818.png" alt="Audio Icon">
+                    <p><strong>Writing Practice</strong></p>
+                    <button onclick="window.location.href='pronouncination.html';">Practice Writing</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Resources -->
+        <section>
+            <h2>Resources</h2>
+            <div class="content">
+                <div>
+                    <img src="https://img.icons8.com/ios/452/dictionary.png" alt="Dictionary Icon">
+                    <p><strong>Dictionary</strong></p>
+                    <button onclick="window.location.href='dictionary.html';">View Dictionary</button>
+                </div>
+                <div>
+                    <img src="https://img.icons8.com/ios/452/book.png" alt="Book Icon">
+                    <p><strong>Books</strong></p>
+                    <button onclick="window.location.href='books.html';">View Books</button>
+                </div>
+                <div>
+                    <img src="https://img.icons8.com/ios/452/chat.png" alt="Chat Icon">
+                    <p><strong>Chat</strong></p>
+                    <button onclick="window.location.href='chat.html';">Start Chat</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section>
+            <h2>Contact Us</h2>
+            <p>If you need help, please reach out to us.</p>
+            <form id="contact-form">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="text" id="message" name="message" placeholder="Your Message" required>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Basic form submission handler
+        document.getElementById("contact-form").onsubmit = function(event) {
+            event.preventDefault();
+            alert("Thank you! Your message has been sent.");
+            event.target.reset();
+        };
+    </script>
+</body>
+</html>

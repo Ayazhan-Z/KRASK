@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Search - Google Books API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #searchBar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .book-result {
+            margin-top: 20px;
+        }
+        .book-result h2 {
+            color: #007bff;
+        }
+        .book {
+            margin: 10px 0;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .book img {
+            max-width: 100px;
+            margin-right: 10px;
+        }
+        .book-info {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .book-info h3 {
+            margin: 0;
+        }
+        .error {
+            color: red;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Book Search</h1>
+
+    <input type="text" id="searchBar" placeholder="Search for a book..." oninput="searchBooks()">
+    
+    <div class="book-result" id="bookResult">
+        <!-- Book results will be displayed here -->
+    </div>
+</div>
+
+<script>
+    async function searchBooks() {
+        const searchQuery = document.getElementById("searchBar").value.trim();
+        const result = document.getElementById("bookResult");
+
+        // Clear previous results
+        result.innerHTML = '';
+
+        if (searchQuery === '') {
+            return; // Do nothing if the search bar is empty
+        }
+
+        const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}`;
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            if (data.items && data.items.length > 0) {
+                data.items.slice(0, 10).forEach(book => {
+                    const bookTitle = book.volumeInfo.title || "No title available";
+                    const bookAuthor = book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "No author available";
+                    const bookCover = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "https://via.placeholder.com/100x150?text=No+Image";
+                    const bookLink = book.volumeInfo.infoLink || "#";
+
+                    result.innerHTML += `
+                        <div class="book">
+                            <img src="${bookCover}" alt="${bookTitle}">
+                            <div class="book-info">
+                                <h3><a href="${bookLink}" target="_blank">${bookTitle}</a></h3>
+                                <p><strong>Author:</strong> ${bookAuthor}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                result.innerHTML = '<p class="error">No books found. Please try another search.</p>';
+            }
+        } catch (error) {
+            result.innerHTML = '<p class="error">Error fetching data from Google Books API.</p>';
+        }
+    }
+</script>
+
+</body>
+</html>

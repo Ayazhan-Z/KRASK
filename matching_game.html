@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Practice</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            padding: 20px;
+        }
+
+        .text-list, .text-content, .sidebar {
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .text-list {
+            flex: 1;
+            margin-right: 20px;
+            overflow-y: auto;
+            max-height: 70vh;
+        }
+
+        .text-item {
+            background-color: #e3f2fd;
+            text-align: center;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-item:hover {
+            transform: scale(1.03);
+        }
+
+        .text-content {
+            flex: 2;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-content p {
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .word {
+            color: #007BFF;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .sidebar {
+            flex: 1;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .sidebar h3 {
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        .meaning {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .emoji {
+            font-size: 30px;
+            margin-top: 5px;
+        }
+
+        .audio-button {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: not-allowed;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .audio-button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Reading Practice</h1>
+        <p>Select a story to read and explore words.</p>
+    </header>
+
+    <div class="container">
+        <!-- Story Selection Sidebar -->
+        <div class="text-list">
+            <div class="text-item" onclick="showText('text1')">Adventures of the Cat</div>
+            <div class="text-item" onclick="showText('text2')">Pirates</div>
+            <div class="text-item" onclick="showText('text3')">Legendary Story of Matt</div>
+            <div class="text-item" onclick="showText('text4')">Biography of Elon Musk</div>
+            <div class="text-item" onclick="showText('text5')">Hostel</div>
+            <div class="text-item" onclick="showText('text6')">Trips to France</div>
+            <div class="text-item" onclick="showText('text7')">Cooking Book</div>
+            <div class="text-item" onclick="showText('text8')">Jungle Safari</div>
+            <div class="text-item" onclick="showText('text9')">Mystery Island</div>
+            <div class="text-item" onclick="showText('text10')">Astronomy 101</div>
+            <div class="text-item" onclick="showText('text11')">Underwater Wonders</div>
+            <div class="text-item" onclick="showText('text12')">A Day in Ancient Rome</div>
+            <div class="text-item" onclick="showText('text13')">Greatest Inventions</div>
+            <div class="text-item" onclick="showText('text14')">The Art of Chess</div>
+            <div class="text-item" onclick="showText('text15')">The Haunted Castle</div>
+            <div class="text-item" onclick="showText('text16')">The Friendly Dog</div>
+            <div class="text-item" onclick="showText('text17')">Mountain Adventures</div>
+            <div class="text-item" onclick="showText('text18')">The Amazing Robot</div>
+            <div class="text-item" onclick="showText('text19')">The Hidden Treasure</div>
+            <div class="text-item" onclick="showText('text20')">The Brave Firefighter</div>
+        </div>
+
+        <!-- Main Text Content Area -->
+        <div class="text-content" id="text-content">
+            <p>Select a story to start reading...</p>
+        </div>
+
+        <!-- Sidebar for Word Meanings -->
+        <div class="sidebar" id="meaning-sidebar">
+            <h3>Word Meaning</h3>
+            <div id="meaning" class="meaning">Click on a word to see its meaning.</div>
+            <div id="emoji" class="emoji"></div>
+            <button class="audio-button" disabled>🔊 Audio (Coming Soon)</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Interactive Reading Practice</p>
+    </footer>
+
+    <script>
+        // Function to Display Text Content
+        function showText(textId) {
+            let textContent = '';
+            if (textId === 'text1') {
+                textContent = `<p>The <span class="word" onclick="showMeaning('cat')">cat</span> woke up early in the morning, ready for a grand adventure. It stretched its paws, yawned widely, and padded quietly out of the house. Out in the garden, it encountered a curious butterfly and tried to <span class="word" onclick="showMeaning('pounce')">pounce</span> on it. The butterfly fluttered away, leading the cat on a merry chase through the flowers and bushes.</p>`;
+            } else if (textId === 'text2') {
+                textContent = `<p>The daring <span class="word" onclick="showMeaning('pirate')">pirate</span> gazed out at the endless <span class="word" onclick="showMeaning('horizon')">horizon</span>. The salty wind blew through his hair as he steered the ship towards the treasure island. His crew prepared for battle, sharpening swords and counting gold coins they had already <span class="word" onclick="showMeaning('plundered')">plundered</span> from previous raids.</p>`;
+            } else if (textId === 'text3') {
+                textContent = `<p>In his youth, Matt was considered a true <span class="word" onclick="showMeaning('legend')">legend</span>. He was fearless, known for conquering any challenge. One day, he embarked on a journey across deserts, forests, and mountains to recover a lost artifact that many thought was just a <span class="word" onclick="showMeaning('myth')">myth</span>. But Matt believed in the power of legends and pushed forward.</p>`;
+            } else if (textId === 'text4') {
+                textContent = `<p>Elon Musk, a man of <span class="word" onclick="showMeaning('visionary')">visionary</span> ideas, revolutionized multiple industries. From electric cars to space exploration, his mind was always focused on the future. His relentless pursuit of innovation led him to push boundaries and inspire people around the world.</p>`;
+            } else if (textId === 'text5') {
+                textContent = `<p>The <span class="word" onclick="showMeaning('hostel')">hostel</span> was buzzing with young travelers from all around the world. Each night, stories of adventures and explorations echoed through the halls. The hostel was not just a place to sleep; it was a hub for meeting people and sharing cultures.</p>`;
+            } else if (textId === 'text6') {
+                textContent = `<p>During our <span class="word" onclick="showMeaning('trip')">trip</span> to <span class="word" onclick="showMeaning('france')">France</span>, we visited the Eiffel Tower and walked along the <span class="word" onclick="showMeaning('seine')">Seine</span> River. The streets were lined with art galleries, and we enjoyed delicious French pastries at every corner.</p>`;
+            } else if (textId === 'text7') {
+                textContent = `<p>The <span class="word" onclick="showMeaning('cooking')">cooking</span> book was full of delightful recipes that anyone could follow. It was more than just instructions; it was a journey through flavors, aromas, and techniques from various cultures.</p>`;
+            } else if (textId === 'text8') {
+                textContent = `<p>The jungle was alive with sounds. Birds chirped, monkeys swung from trees, and the ground was soft beneath our feet. We were on a <span class="word" onclick="showMeaning('safari')">safari</span>, eager to spot animals in their natural habitat.</p>`;
+            } else if (textId === 'text9') {
+                textContent = `<p>Legend has it that a treasure is hidden on the <span class="word" onclick="showMeaning('island')">island</span> just beyond the mountains. Many adventurers have tried to find it, but none have returned. The mystery of the island continues to <span class="word" onclick="showMeaning('tempt')">tempt</span> many brave souls.</p>`;
+            } else if (textId === 'text10') {
+                textContent = `<p>Astronomy is the study of stars, planets, and the universe. By studying the night sky, scientists have discovered new galaxies, learned about the <span class="word" onclick="showMeaning('origin')">origin</span> of our universe, and unlocked secrets of time and space.</p>`;
+            } else if (textId === 'text11') {
+                textContent = `<p>Underwater life is mysterious and beautiful. The deep sea is home to creatures that are unlike anything on land. <span class="word" onclick="showMeaning('coral')">Coral</span> reefs provide shelter for fish and other creatures, while giant whales glide gracefully through the water.</p>`;
+            } else if (textId === 'text12') {
+                textContent = `<p>In Ancient Rome, people wore tunics and sandals. The <span class="word" onclick="showMeaning('colosseum')">Colosseum</span> was the site of grand gladiator battles, and the streets were filled with merchants selling food, spices, and cloth.</p>`;
+            } else if (textId === 'text13') {
+                textContent = `<p>Some of the world's greatest inventions have changed the way we live. The wheel, electricity, and the internet are just a few examples. Each invention has shaped society in profound ways, leading to the modern world we know today.</p>`;
+            } else if (textId === 'text14') {
+                textContent = `<p>Chess is a game of strategy. Each player moves pieces like knights, bishops, and queens, with the goal of checkmating the opponent's king. It’s a game that requires patience and careful planning.</p>`;
+            } else if (textId === 'text15') {
+                textContent = `<p>The haunted castle on the hill had long been abandoned. The villagers whispered of strange noises coming from within, and no one dared to enter after sunset. But one night, a group of brave souls decided to uncover its secrets.</p>`;
+            } else if (textId === 'text16') {
+                textContent = `<p>The dog was always friendly. It wagged its tail every time someone walked by. It loved to play fetch and would follow its owners wherever they went. It was the most loyal companion anyone could ask for.</p>`;
+            } else if (textId === 'text17') {
+                textContent = `<p>The mountain adventure was filled with challenges. The steep slopes tested our endurance, but the stunning views from the top made every step worth it. We celebrated our achievement with a picnic, feeling on top of the world.</p>`;
+            } else if (textId === 'text18') {
+                textContent = `<p>The amazing robot was designed to assist with everyday tasks. It could clean, cook, and even have simple conversations. It quickly became an essential part of life, making everything more efficient and easy.</p>`;
+            } else if (textId === 'text19') {
+                textContent = `<p>Many explorers have searched for hidden treasure, but few have succeeded. Legends tell of a treasure chest buried deep in the jungle, filled with gold coins and precious gems.</p>`;
+            } else if (textId === 'text20') {
+                textContent = `<p>The brave firefighter rushed into the burning building without hesitation. Despite the smoke and heat, their focus remained on rescuing anyone trapped inside. Their courage and skill saved lives that day.</p>`;
+            }
+
+            document.getElementById('text-content').innerHTML = textContent;
+        }
+
+        // Function to Show Word Meaning
+        function showMeaning(word) {
+            let meaning = '';
+            let emoji = '';
+            if (word === 'cat') {
+                meaning = 'A small, domesticated mammal known for being independent.';
+                emoji = '🐱';
+            } else if (word === 'pounce') {
+                meaning = 'To spring or leap suddenly to attack.';
+                emoji = '🐾';
+            } else if (word === 'pirate') {
+                meaning = 'A person who attacks ships to steal goods.';
+                emoji = '🏴‍☠️';
+            } else if (word === 'horizon') {
+                meaning = 'The line where the earth seems to meet the sky.';
+                emoji = '🌅';
+            } else if (word === 'plundered') {
+                meaning = 'To steal goods, usually by force.';
+                emoji = '💰';
+            }
+            // Add additional words here...
+
+            document.getElementById('meaning').innerText = meaning;
+            document.getElementById('emoji').innerText = emoji;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn the Alphabet</title>
+    <style>
+        /* Styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .alphabet-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .alphabet-box {
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .alphabet-box:hover {
+            transform: scale(1.1);
+        }
+
+        .alphabet-box p {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .alphabet-box img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Learn the Alphabet</h1>
+        <p>Click on a letter to learn how to pronounce it</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="content">
+        <section>
+            <h2>Interactive Alphabet</h2>
+            <div class="alphabet-container">
+                <!-- Generate alphabet boxes for each letter -->
+                <div class="alphabet-box" onclick="playAudio('A')">
+                    <img src="https://img.icons8.com/ios/452/a.png" alt="A">
+                    <p>A</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('B')">
+                    <img src="https://img.icons8.com/ios/452/b.png" alt="B">
+                    <p>B</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('C')">
+                    <img src="https://img.icons8.com/ios/452/c.png" alt="C">
+                    <p>C</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('D')">
+                    <img src="https://img.icons8.com/ios/452/d.png" alt="D">
+                    <p>D</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('E')">
+                    <img src="https://img.icons8.com/ios/452/e.png" alt="E">
+                    <p>E</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('F')">
+                    <img src="https://img.icons8.com/ios/452/f.png" alt="F">
+                    <p>F</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('G')">
+                    <img src="https://img.icons8.com/ios/452/g.png" alt="G">
+                    <p>G</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('H')">
+                    <img src="https://img.icons8.com/ios/452/h.png" alt="H">
+                    <p>H</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('I')">
+                    <img src="https://img.icons8.com/ios/452/i.png" alt="I">
+                    <p>I</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('J')">
+                    <img src="https://img.icons8.com/ios/452/j.png" alt="J">
+                    <p>J</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('K')">
+                    <img src="https://img.icons8.com/ios/452/k.png" alt="K">
+                    <p>K</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('L')">
+                    <img src="https://img.icons8.com/ios/452/l.png" alt="L">
+                    <p>L</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('M')">
+                    <img src="https://img.icons8.com/ios/452/m.png" alt="M">
+                    <p>M</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('N')">
+                    <img src="https://img.icons8.com/ios/452/n.png" alt="N">
+                    <p>N</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('O')">
+                    <img src="https://img.icons8.com/ios/452/o.png" alt="O">
+                    <p>O</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('P')">
+                    <img src="https://img.icons8.com/ios/452/p.png" alt="P">
+                    <p>P</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('Q')">
+                    <img src="https://img.icons8.com/ios/452/q.png" alt="Q">
+                    <p>Q</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('R')">
+                    <img src="https://img.icons8.com/ios/452/r.png" alt="R">
+                    <p>R</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('S')">
+                    <img src="https://img.icons8.com/ios/452/s.png" alt="S">
+                    <p>S</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('T')">
+                    <img src="https://img.icons8.com/ios/452/t.png" alt="T">
+                    <p>T</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('U')">
+                    <img src="https://img.icons8.com/ios/452/u.png" alt="U">
+                    <p>U</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('V')">
+                    <img src="https://img.icons8.com/ios/452/v.png" alt="V">
+                    <p>V</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('W')">
+                    <img src="https://img.icons8.com/ios/452/w.png" alt="W">
+                    <p>W</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('X')">
+                    <img src="https://img.icons8.com/ios/452/x.png" alt="X">
+                    <p>X</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('Y')">
+                    <img src="https://img.icons8.com/ios/452/y.png" alt="Y">
+                    <p>Y</p>
+                </div>
+                <div class="alphabet-box" onclick="playAudio('Z')">
+                    <img src="https://img.icons8.com/ios/452/z.png" alt="Z">
+                    <p>Z</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Learn the alphabet with sound</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function playAudio(letter) {
+            // Path to the local files on your machine
+            var audio = new Audio(`file:///C:/Users/user/Desktop/APP/audios/english_letters/${letter}.wav`);
+            audio.play();
+        }
+    </script>
+</body>
+</html>
+

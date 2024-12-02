@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Sentences</title>
+    <style>
+        /* Styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .sentences-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .sentence-box {
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .sentence-box:hover {
+            transform: scale(1.1);
+        }
+
+        .sentence-box p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Learn Sentences</h1>
+        <p>Click on a sentence to learn more 📚✨</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="content">
+        <section>
+            <h2>Interactive Sentences</h2>
+            <div class="sentences-container">
+                <!-- Sentence boxes with info displayed on click -->
+                <div class="sentence-box" onclick="displayInfo('sentence1')">
+                    <p>"How are you? 😊"</p>
+                </div>
+                <div class="sentence-box" onclick="displayInfo('sentence2')">
+                    <p>"I am learning English. 📖"</p>
+                </div>
+                <div class="sentence-box" onclick="displayInfo('sentence3')">
+                    <p>"Where are you from? 🌍"</p>
+                </div>
+                <div class="sentence-box" onclick="displayInfo('sentence4')">
+                    <p>"I live in New York. 🗽"</p>
+                </div>
+                <div class="sentence-box" onclick="displayInfo('sentence5')">
+                    <p>"Can I help you? 🤝"</p>
+                </div>
+                <div class="sentence-box" onclick="displayInfo('sentence6')">
+                    <p>"What time is it? ⏰"</p>
+                </div>
+                <div class="sentence-box" onclick="displayInfo('sentence7')">
+                    <p>"It is a sunny day. ☀️"</p>
+                </div>
+                <div class="sentence-box" onclick="displayInfo('sentence8')">
+                    <p>"She is my friend. 👭"</p>
+                </div>
+                <div class="sentence-box" onclick="displayInfo('sentence9')">
+                    <p>"Where is the nearest store? 🏬"</p>
+                </div>
+                <div class="sentence-box" onclick="displayInfo('sentence10')">
+                    <p>"I don't understand. 🤔"</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Learn sentences visually and interactively! 🌟</p>
+    </footer>
+
+    <!-- JavaScript to display more information on click -->
+    <script>
+        function displayInfo(sentenceId) {
+            // Sentences with emoji explanations
+            var sentenceInfo = {
+                sentence1: "This sentence is a basic greeting, asking how someone is feeling. 😊",
+                sentence2: "This is a simple statement about learning English. 📖",
+                sentence3: "A question asking about someone's place of origin. 🌍",
+                sentence4: "A statement about where someone lives. 🗽",
+                sentence5: "An offer to help someone. 🤝",
+                sentence6: "A question about the current time. ⏰",
+                sentence7: "A description of the weather, indicating it’s sunny. ☀️",
+                sentence8: "A statement introducing a friend. 👭",
+                sentence9: "A question about the location of a store. 🏬",
+                sentence10: "A statement expressing a lack of understanding. 🤔"
+            };
+
+            // Display sentence information in an alert box
+            alert(sentenceInfo[sentenceId]);
+        }
+    </script>
+</body>
+</html>

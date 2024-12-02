@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple English Chatbot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        #chat-container {
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        #chat-box {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        .user-message {
+            text-align: right;
+            margin: 10px 0;
+        }
+
+        .bot-message {
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        .message {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message .message {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .bot-message .message {
+            background-color: #e4e4e4;
+            color: #333;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+            outline: none;
+            margin-top: 10px;
+            width: calc(100% - 50px);
+        }
+
+        button {
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="chat-container">
+        <h2>Simple English Chatbot</h2>
+        <div id="chat-box"></div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type your message..." onkeypress="if(event.keyCode == 13) sendMessage()">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var input = document.getElementById("user-input").value;
+            if (input.trim() === "") return;
+
+            var chatBox = document.getElementById("chat-box");
+            chatBox.innerHTML += `<div class="user-message"><div class="message">${input}</div></div>`;
+
+            var response = getResponse(input);
+            chatBox.innerHTML += `<div class="bot-message"><div class="message">${response}</div></div>`;
+
+            document.getElementById("user-input").value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function getResponse(input) {
+            input = input.toLowerCase().trim();
+
+            if (input.includes("how are you")) {
+                return "I am good! How are you?";
+            }
+            if (input.includes("hello") || input.includes("hi")) {
+                return "Hello! How can I help you today?";
+            }
+            if (input.includes("learn english")) {
+                return "Great! I can help you. Let's learn English together!";
+            }
+            if (input.includes("name")) {
+                return "I am a chatbot. I don't have a name, but you can call me 'Bot'!";
+            }
+            if (input.includes("thank you") || input.includes("thanks")) {
+                return "You're welcome! :)";
+            }
+
+            return "Sorry, I didn't understand that. Could you try asking something else?";
+        }
+    </script>
+
+</body>
+</html>
